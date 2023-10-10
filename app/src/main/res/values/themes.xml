@@ -1,0 +1,19 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.ScanTix" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/lavendar</item>
+        <item name="colorPrimaryVariant">@color/lavendar</item>
+    </style>
+
+    <style name="Theme.ScanTix" parent="Base.Theme.ScanTix" />
+
+    <style name="Theme.ScanTix.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.ScanTix.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.ScanTix.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

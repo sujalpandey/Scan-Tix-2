@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "877965569880",
+    "project_id": "scan-tix",
+    "storage_bucket": "scan-tix.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:877965569880:android:cf1c3caf0cb78f29b27f2d",
+        "android_client_info": {
+          "package_name": "com.project.scantix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "877965569880-q7d2ehrgg5fhvlb75eotlp571dg3lvsh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDILwIrfBHAOie7FE87ZkZHXAhJK8_hxVs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "877965569880-q7d2ehrgg5fhvlb75eotlp571dg3lvsh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

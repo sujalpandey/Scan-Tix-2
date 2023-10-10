@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".RegisterActivity">
+
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_thin"
+        android:text="HELLO"
+        android:textColor="@color/material_dynamic_tertiary80"
+        android:textSize="36dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.159">
+
+    </TextView>
+
+    <EditText
+        android:id="@+id/userName"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:background="@drawable/lavendar_border"
+        android:ems="12"
+        android:gravity="center"
+        android:hint="Name"
+        android:inputType="text"
+        android:singleLine="true"
+        android:textColor="@color/material_dynamic_tertiary80"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeText"
+        app:layout_constraintVertical_bias="0.126"
+        tools:visibility="visible" />
+
+    <EditText
+        android:id="@+id/userEmail"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:background="@drawable/lavendar_border"
+        android:ems="12"
+        android:gravity="center"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userName"
+        app:layout_constraintVertical_bias="0.031"
+
+        >
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/userPhone"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:background="@drawable/lavendar_border"
+        android:ems="12"
+        android:gravity="center"
+        android:hint="Phone no "
+        android:inputType="phone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userEmail"
+        app:layout_constraintVertical_bias="0.044"
+
+
+        />
+
+    <EditText
+        android:id="@+id/userPassword"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:background="@drawable/lavendar_border"
+        android:ems="12"
+        android:gravity="center"
+        android:hint="Create Password"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userPhone"
+        app:layout_constraintVertical_bias="0.049">
+
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/userPasswordCnf"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:background="@drawable/lavendar_border"
+        android:ems="12"
+        android:gravity="center"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userPassword"
+        app:layout_constraintVertical_bias="0.043">
+
+
+    </EditText>
+
+    <Button
+        android:id="@+id/signUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="12"
+        android:text="Sign Up"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userPasswordCnf"
+        app:layout_constraintVertical_bias="0.529" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
