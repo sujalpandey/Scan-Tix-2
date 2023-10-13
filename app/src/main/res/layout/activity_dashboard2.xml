@@ -189,8 +189,6 @@
                     android:layout_height="115dp"
                     android:layout_margin="20dp"
                     android:background="@drawable/white_background"
-
-
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
