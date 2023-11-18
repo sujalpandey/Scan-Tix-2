@@ -16,11 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         getStarted = findViewById(R.id.Start);
-
         getStarted.setOnClickListener(v -> startLogin());
-
-
-        
     }
 
     public void startLogin(){
@@ -29,5 +25,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(loginIntent);
 
     }
-
 }

@@ -46,7 +46,8 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         Button registerBtn = findViewById(R.id.userRegister);
         registerBtn.setOnClickListener(view -> {
-            Intent intent1 = new Intent(LoginActivity.this, RegisterActivity.class);
+            Intent intent1 = new Intent(LoginActivity.this,
+                    RegisterActivity.class);
             startActivity(intent1);
 
         });
@@ -78,7 +79,8 @@ public class LoginActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
 
                                     showToast("Login successful");
-                                    Intent intent = new Intent(LoginActivity.this,dashboard.class);
+                                    Intent intent = new Intent(LoginActivity.this,
+                                            dashboard.class);
                                     startActivity(intent);
                                 } else {
 
@@ -87,14 +89,14 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                             }
                         });
+              }
+            });
+
             }
-        });
 
-    }
-
-    private void showToast(String message) {
+        private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show(); // Added .show() at the end
-    }
+         }
 
 
 }

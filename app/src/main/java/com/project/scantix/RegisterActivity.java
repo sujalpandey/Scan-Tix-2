@@ -39,7 +39,6 @@ public class RegisterActivity extends AppCompatActivity {
     Button register;
     String userId;
     FirebaseAuth mAuth;
-
     FirebaseFirestore fStore;
 
     @Override
