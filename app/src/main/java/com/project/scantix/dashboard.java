@@ -19,9 +19,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
@@ -50,28 +52,12 @@ public class dashboard extends AppCompatActivity {
         username = findViewById(R.id.userName);
 
         RecyclerView event_recycler = findViewById(R.id.eventCard);
-
         event_recycler.setLayoutManager(new LinearLayoutManager(this));
 
+        fetchDataFromFirestore();
 
-
-        eventlist.add(new event("Deloite Bridge","Join to get superb learning series"));
-        eventlist.add(new event("Deloite Bridge","Join to get superb learning series"));
-        eventlist.add(new event("Deloite Bridge","Join to get superb learning series"));
-        eventlist.add(new event("Deloite Bridge","Join to get superb learning series"));
-        eventlist.add(new event("Deloite Bridge","Join to get superb learning series"));
-        eventlist.add(new event("Deloite Bridge","Join to get superb learning series"));
-        eventlist.add(new event("Deloite Bridge","Join to get superb learning series"));
-        eventlist.add(new event("Deloite Bridge","Join to get superb learning series"));
-        eventlist.add(new event("Deloite Bridge","Join to get superb learning series"));
-        eventlist.add(new event("Deloite Bridge","Join to get superb learning series"));
-
-        EventAdapter adapter  = new EventAdapter(this,eventlist);
 
         String id = fuser.getUid();
-        event_recycler.setAdapter(adapter);
-
-
 
 
         DocumentReference docRef = fstore.collection("users").document(id);
@@ -104,4 +90,39 @@ public class dashboard extends AppCompatActivity {
         });
 
     }
+
+    private void fetchDataFromFirestore() {
+        CollectionReference eventsCollection = fstore.collection("Events");
+
+        eventsCollection.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                QuerySnapshot querySnapshot = task.getResult();
+                if (querySnapshot != null) {
+                    for (DocumentSnapshot document : querySnapshot.getDocuments()) {
+
+                        event Event = new event(document.getString("Event_Name"),document.getString("Event_Des"), document.getId());
+                        if (Event != null) {
+                            eventlist.add(Event);
+                        }
+                    }
+
+                    // Now eventList contains all the events from the "Events" collection
+                    // You can use it as needed
+                    for (event Event : eventlist) {
+                        Log.d("Event", "Event UID: " + Event.getUid());
+                        Log.d("Event", "Event Name: " + Event.getEventName());
+                        Log.d("Event", "Event Description: " + Event.getEventDescription());
+                    }
+                    Log.d("Event", "Number of events: " + eventlist.size());
+
+                    EventAdapter adapter = new EventAdapter(this, eventlist);
+                    RecyclerView event_recycler = findViewById(R.id.eventCard);
+                    event_recycler.setAdapter(adapter);
+                }
+            } else {
+                Log.e("Firestore", "Error getting documents: ", task.getException());
+            }
+        });
+    }
 }
+

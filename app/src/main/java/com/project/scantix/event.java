@@ -1,16 +1,29 @@
 package com.project.scantix;
 
-import androidx.appcompat.app.AppCompatActivity;
+public class event {
+    private String eventName;
+    private String uid;
+    private String eventDescription;
 
-public class event extends AppCompatActivity {
+    // Empty constructor required for Firestore
+    public event() {
+    }
 
-    String eventName;
-    String eventDescription;
-
-    public event(String eventName,String eventDescription){
+    public event(String eventName, String eventDescription, String uid) {
         this.eventName = eventName;
+        this.uid = uid;
         this.eventDescription = eventDescription;
     }
 
+    public String getEventName() {
+        return eventName;
+    }
 
+    public String getUid() {
+        return uid;
+    }
+
+    public String getEventDescription() {
+        return eventDescription;
+    }
 }
