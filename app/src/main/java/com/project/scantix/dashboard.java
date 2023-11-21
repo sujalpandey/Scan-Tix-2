@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,6 +32,8 @@ public class dashboard extends AppCompatActivity {
 
     Button logout;
 
+    ImageView clbook,clevent,clpast;
+
     FirebaseAuth fauth;
     FirebaseUser fuser;
     FirebaseFirestore fstore;
@@ -48,6 +51,36 @@ public class dashboard extends AppCompatActivity {
         fauth = FirebaseAuth.getInstance();
         fstore = FirebaseFirestore.getInstance();
         fuser = fauth.getCurrentUser();
+
+
+        clbook=findViewById(R.id.imageView5);
+        clbook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(dashboard.this, ClBooking.class);
+                startActivity(intent);
+            }
+        });
+
+
+        clevent=findViewById(R.id.imageView6);
+        clevent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(dashboard.this, ClEvents.class);
+                startActivity(intent);
+            }
+        });
+        clpast=findViewById(R.id.imageView7);
+        clpast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(dashboard.this, ClPast.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         username = findViewById(R.id.userName);
 

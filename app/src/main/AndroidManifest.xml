@@ -15,6 +15,15 @@
         android:theme="@style/Theme.ScanTix"
         tools:targetApi="31">
         <activity
+            android:name=".ClPast"
+            android:exported="false" />
+        <activity
+            android:name=".ClEvents"
+            android:exported="false" />
+        <activity
+            android:name=".ClBooking"
+            android:exported="false" />
+        <activity
             android:name=".BookingActivity"
             android:exported="false" />
         <activity
