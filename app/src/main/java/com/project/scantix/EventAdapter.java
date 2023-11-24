@@ -2,7 +2,6 @@ package com.project.scantix;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.metrics.Event;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +10,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.firestore.v1.Precondition;
 
 import java.util.ArrayList;
 
@@ -81,7 +78,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
 
 
         private void navigateToDestination(event curr_event) {
-            Intent intent = new Intent(context, dashboard.class);
+            Intent intent = new Intent(context, EventDetailActivity.class);
             intent.putExtra("eventUid", curr_event.getUid());
             context.startActivity(intent);
         }

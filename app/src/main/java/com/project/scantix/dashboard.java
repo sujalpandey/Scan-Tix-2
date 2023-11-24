@@ -139,15 +139,6 @@ public class dashboard extends AppCompatActivity {
                         }
                     }
 
-                    // Now eventList contains all the events from the "Events" collection
-                    // You can use it as needed
-                    for (event Event : eventlist) {
-                        Log.d("Event", "Event UID: " + Event.getUid());
-                        Log.d("Event", "Event Name: " + Event.getEventName());
-                        Log.d("Event", "Event Description: " + Event.getEventDescription());
-                    }
-                    Log.d("Event", "Number of events: " + eventlist.size());
-
                     EventAdapter adapter = new EventAdapter(this, eventlist);
                     RecyclerView event_recycler = findViewById(R.id.eventCard);
                     event_recycler.setAdapter(adapter);
