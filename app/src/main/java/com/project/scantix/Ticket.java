@@ -10,7 +10,8 @@ public class Ticket {
     private String eventVenue;
 
 
-    public Ticket(String eventName, String eventDescription, String eventDate,String ticketNo,String userName,String eventVenue) {
+
+    public Ticket(String eventName, String eventDescription, String eventDate, String ticketNo, String userName, String eventVenue) {
         this.eventName = eventName;
         this.eventDate = eventDate;
         this.ticketNo = ticketNo;
@@ -24,13 +25,22 @@ public class Ticket {
         return eventName;
     }
 
-    public String getEventDescription() {
-        return event;
+    public String getEventVenue() {
+        return eventVenue;
     }
 
     public String getEventDate() {
         return eventDate;
     }
+
+    public String getTicketNo() {
+        return ticketNo;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
 
 
 }
