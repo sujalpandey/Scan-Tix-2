@@ -52,8 +52,8 @@ public class TicketActivity extends AppCompatActivity {
                                 document.getString("Event_Des"),
                                 document.getString("Event_Date"),
                                 "1", // Assuming some default ticket number
-                                "sujal", // Assuming some default user name
-                                eventUid // Event UID retrieved from Intent
+                                "sujal" // Assuming some default user name
+
                         );
 
                         // Generate and display the ticket
@@ -82,8 +82,21 @@ public class TicketActivity extends AppCompatActivity {
     }
 
     private void displayTicket(Ticket ticket) {
-        // Your implementation to display ticket details in UI
+        // Assuming you have TextViews in your ticket_card layout
+        TextView eventNameTextView = findViewById(R.id.eventName);
+        TextView eventVenueTextView = findViewById(R.id.eventVenue);
+        TextView eventDateTextView = findViewById(R.id.eventDate);
+        TextView ticketNoTextView = findViewById(R.id.rowNo);
+        TextView userNameTextView = findViewById(R.id.userName);
+
+        // Set the text values based on the Ticket object
+        eventNameTextView.setText("Event: " + ticket.getEventName());
+        eventVenueTextView.setText("Venue: " + ticket.getEventVenue());
+        eventDateTextView.setText("Date: " + ticket.getEventDate());
+        ticketNoTextView.setText("Ticket Number: " + ticket.getTicketNo());
+        userNameTextView.setText("User: " + ticket.getUserName());
     }
+
 
     private void storeTicketInFirestore(Ticket ticket) {
         String userId = fuser.getUid();
@@ -92,11 +105,11 @@ public class TicketActivity extends AppCompatActivity {
         CollectionReference ticketsRef = userRef.collection("Tickets");
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        ticket.getQrCodeBitmap().compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        ticket.generateQrCodeBitmap().compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
         byte[] bitmapData = byteArrayOutputStream.toByteArray();
 
         Map<String, Object> ticketData = new HashMap<>();
-        ticketData.put("eventUid", ticket.getEventUid());
+//        ticketData.put("eventUid", ticket.getEventUid());
         ticketData.put("qrCodeBitmap", bitmapData);
 
         ticketsRef.add(ticketData)
