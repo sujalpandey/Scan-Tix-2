@@ -4,14 +4,19 @@ import java.util.Date;
 
 public class Ticket {
     private String eventName;
-    private String eventDescription;
-    private Date eventDate;
+    private String eventDate;
+    private String ticketNo;
+    private String userName;
+    private String eventVenue;
 
 
-    public Ticket(String eventName, String eventDescription, Date eventDate) {
+    public Ticket(String eventName, String eventDescription, String eventDate,String ticketNo,String userName,String eventVenue) {
         this.eventName = eventName;
-        this.eventDescription = eventDescription;
         this.eventDate = eventDate;
+        this.ticketNo = ticketNo;
+        this.userName = userName;
+        this.eventVenue = eventVenue;
+
 
     }
 
@@ -20,10 +25,10 @@ public class Ticket {
     }
 
     public String getEventDescription() {
-        return eventDescription;
+        return event;
     }
 
-    public Date getEventDate() {
+    public String getEventDate() {
         return eventDate;
     }
 
