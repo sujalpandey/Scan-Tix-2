@@ -98,8 +98,9 @@ public class TicketActivity extends AppCompatActivity {
     }
 
 
-    private void storeTicketInFirestore(Ticket ticket) {
+    private void storeTicketInFirestore(Ticket ticket, String eventUid, String eventName, String eventDate, String ticketNo, String userName, String eventVenue) {
         String userId = fuser.getUid();
+        String ticketDocId = userId + "_" + eventUid;
 
         DocumentReference userRef = fstore.collection("users").document(userId);
         CollectionReference ticketsRef = userRef.collection("Tickets");
@@ -109,16 +110,22 @@ public class TicketActivity extends AppCompatActivity {
         byte[] bitmapData = byteArrayOutputStream.toByteArray();
 
         Map<String, Object> ticketData = new HashMap<>();
-//        ticketData.put("eventUid", ticket.getEventUid());
+        ticketData.put("Event_Name", eventName);
+        ticketData.put("Event_Date", eventDate);
+        ticketData.put("Ticket_No", ticketNo);
+        ticketData.put("User_Name", userName);
+        ticketData.put("Event_Venue", eventVenue);
         ticketData.put("qrCodeBitmap", bitmapData);
 
-        ticketsRef.add(ticketData)
-                .addOnSuccessListener(documentReference -> {
+        ticketsRef.document(ticketDocId)
+                .set(ticketData)
+                .addOnSuccessListener(aVoid -> {
                     // Ticket data added successfully
                 })
                 .addOnFailureListener(e -> {
                     // Handle failure
                 });
     }
+
 }
 
