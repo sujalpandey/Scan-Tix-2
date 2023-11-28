@@ -2,6 +2,7 @@ package com.project.scantix;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -83,23 +84,35 @@ public class TicketActivity extends AppCompatActivity {
 
     private void displayTicket(Ticket ticket) {
         // Assuming you have TextViews in your ticket_card layout
-        TextView eventNameTextView = findViewById(R.id.eventName);
-        TextView eventVenueTextView = findViewById(R.id.eventVenue);
-        TextView eventDateTextView = findViewById(R.id.eventDate);
-        TextView ticketNoTextView = findViewById(R.id.rowNo);
-        TextView userNameTextView = findViewById(R.id.userName);
+        // Assume you have already inflated the main layout (activity_ticket.xml)
 
-        // Set the text values based on the Ticket object
-        eventNameTextView.setText("Event: " + ticket.getEventName());
-        eventVenueTextView.setText("Venue: " + ticket.getEventVenue());
-        eventDateTextView.setText("Date: " + ticket.getEventDate());
-        ticketNoTextView.setText("Ticket Number: " + ticket.getTicketNo());
-        userNameTextView.setText("User: " + ticket.getUserName());
+// Obtain a reference to the included layout
+        View includedLayout = findViewById(R.id.ticket_card);
+
+// Obtain references to TextViews inside the included layout
+        TextView eventNameTextView = includedLayout.findViewById(R.id.eventName);
+        TextView eventVenueTextView = includedLayout.findViewById(R.id.eventVenue);
+        TextView eventDateTextView = includedLayout.findViewById(R.id.eventDate);
+        TextView ticketNoTextView = includedLayout.findViewById(R.id.rowNo);
+        TextView userNameTextView = includedLayout.findViewById(R.id.userName);
+
+// Create a Ticket object with your data (replace this with your actual data)
+        Ticket ticket1 = new Ticket("HCL", "22/1123", "1", "Sujal", "C1");
+
+// Set the text values based on the Ticket object
+        eventNameTextView.setText(ticket.getEventName());
+        eventVenueTextView.setText(ticket.getEventVenue());
+        eventDateTextView.setText(ticket.getEventDate());
+        ticketNoTextView.setText(ticket.getTicketNo());
+        userNameTextView.setText(ticket.getUserName());
+
     }
 
 
-    private void storeTicketInFirestore(Ticket ticket, String eventUid, String eventName, String eventDate, String ticketNo, String userName, String eventVenue) {
+    private void storeTicketInFirestore(Ticket ticket) {
         String userId = fuser.getUid();
+        String eventUid = getIntent().getStringExtra("eventUid");
+
         String ticketDocId = userId + "_" + eventUid;
 
         DocumentReference userRef = fstore.collection("users").document(userId);
@@ -110,11 +123,11 @@ public class TicketActivity extends AppCompatActivity {
         byte[] bitmapData = byteArrayOutputStream.toByteArray();
 
         Map<String, Object> ticketData = new HashMap<>();
-        ticketData.put("Event_Name", eventName);
-        ticketData.put("Event_Date", eventDate);
-        ticketData.put("Ticket_No", ticketNo);
-        ticketData.put("User_Name", userName);
-        ticketData.put("Event_Venue", eventVenue);
+        ticketData.put("Event_Name", ticket.getEventName());
+        ticketData.put("Event_Date", ticket.getEventDate());
+        ticketData.put("Ticket_No", ticket.getTicketNo());
+        ticketData.put("User_Name", ticket.getUserName());
+        ticketData.put("Event_Venue", ticket.getEventVenue());
         ticketData.put("qrCodeBitmap", bitmapData);
 
         ticketsRef.document(ticketDocId)
@@ -126,6 +139,7 @@ public class TicketActivity extends AppCompatActivity {
                     // Handle failure
                 });
     }
+
 
 }
 
