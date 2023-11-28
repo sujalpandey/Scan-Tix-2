@@ -53,7 +53,7 @@ public class EventDetailActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        // Document found, retrieve fields and update UI
+
                         String eventName = document.getString("Event_Name");
                         String eventDescription = document.getString("Event_Des");
                         String eventDate = document.getString("Event_Date");
@@ -69,7 +69,7 @@ public class EventDetailActivity extends AppCompatActivity {
                         TextView eventDescriptionTextView = findViewById(R.id.eventDescription);
                         eventDescriptionTextView.setText(eventDescription);
 
-                        // Set values to other TextViews as needed
+
                         TextView eventDateTextView = findViewById(R.id.eventDate);
                         eventDateTextView.setText(eventDate);
 

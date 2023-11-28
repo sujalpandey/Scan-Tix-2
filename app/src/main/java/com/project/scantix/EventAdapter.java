@@ -84,7 +84,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         }
 
         private void navigateToRSVP(event curr_event) {
-            Intent intent = new Intent(context, BookingActivity.class);
+            Intent intent = new Intent(context, TicketActivity.class);
             intent.putExtra("eventUid", curr_event.getUid());
             context.startActivity(intent);
         }

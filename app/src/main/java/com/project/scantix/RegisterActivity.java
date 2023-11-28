@@ -92,8 +92,8 @@ public class RegisterActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-
                                     FirebaseUser checkuser = mAuth.getCurrentUser();
+
                                     if (checkuser != null) {
                                         userId = checkuser.getUid();
                                     } else {
@@ -103,26 +103,42 @@ public class RegisterActivity extends AppCompatActivity {
 
                                     showToast("Registration is successful");
 
-
+                                    // Create a user map for the main user document
                                     Map<String, Object> user = new HashMap<>();
                                     user.put("fName", name);
                                     user.put("phoneNo", contact);
                                     user.put("email", email);
 
-
+                                    // Add the user document to the "users" collection
                                     fStore.collection("users").document(userId)
                                             .set(user)
                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                 @Override
                                                 public void onSuccess(Void aVoid) {
-
+                                                    // Create an empty "Tickets" subcollection within the user document
+                                                    fStore.collection("users").document(userId)
+                                                            .collection("Tickets").document("Placeholder")
+                                                            .set(new HashMap<>()) // Empty data, you can use any placeholder
+                                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                @Override
+                                                                public void onSuccess(Void aVoid) {
+                                                                    // Subcollection creation successful
+                                                                }
+                                                            })
+                                                            .addOnFailureListener(new OnFailureListener() {
+                                                                @Override
+                                                                public void onFailure(@NonNull Exception e) {
+                                                                    Log.d(TAG, "Subcollection creation failed with ", e);
+                                                                    showToast("Subcollection creation failed");
+                                                                }
+                                                            });
                                                 }
                                             })
                                             .addOnFailureListener(new OnFailureListener() {
                                                 @Override
                                                 public void onFailure(@NonNull Exception e) {
-                                                    Log.d(TAG, "get failed with ", task.getException());
-                                                    showToast("Data Uploaded Failed");
+                                                    Log.d(TAG, "User document creation failed with ", e);
+                                                    showToast("User document creation failed");
                                                 }
                                             });
 
@@ -131,12 +147,11 @@ public class RegisterActivity extends AppCompatActivity {
                                     finish();
 
                                 } else {
-
-
                                     showToast("Registration Failed!");
                                 }
                             }
                         });
+
 
             }
         });

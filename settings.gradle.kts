@@ -10,8 +10,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+
     }
 }
+
+
 
 rootProject.name = "Scan Tix"
 include(":app")

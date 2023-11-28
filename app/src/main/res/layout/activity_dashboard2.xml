@@ -163,6 +163,8 @@
                         android:layout_width="88dp"
                         android:layout_height="96dp"
                         android:layout_margin="10dp"
+                        android:clickable="true"
+                        android:focusable="true"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -261,6 +263,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="300dp">
@@ -291,7 +294,6 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="20dp"/>
                 </LinearLayout>
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>

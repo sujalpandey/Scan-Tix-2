@@ -52,6 +52,9 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
     implementation ("com.intuit.sdp:sdp-android:1.0.6")
+    implementation ("com.google.zxing:core:3.5.2")
+    implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
+
 }
 
 

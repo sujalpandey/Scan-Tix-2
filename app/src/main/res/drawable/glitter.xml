@@ -1,0 +1,16 @@
+<!-- combined_gradient_and_glitter.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Gradient background -->
+    <item>
+        <shape>
+            <gradient
+                android:startColor="#0000FF"
+                android:endColor="#00FF00"
+                android:angle="135" />
+        </shape>
+    </item>
+
+
+
+</layer-list>
