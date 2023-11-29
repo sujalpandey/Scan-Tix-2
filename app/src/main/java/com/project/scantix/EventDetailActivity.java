@@ -22,6 +22,14 @@ public class EventDetailActivity extends AppCompatActivity {
 
     Button rsvp_button;
 
+    String eventName;
+    String eventDescription;
+    String eventDate;
+    String regStart;
+    String regEnd;
+    String totalSeats;
+    String availableSeats;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,13 +62,13 @@ public class EventDetailActivity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
 
-                        String eventName = document.getString("Event_Name");
-                        String eventDescription = document.getString("Event_Des");
-                        String eventDate = document.getString("Event_Date");
-                        String regStart = document.getString("Reg_Start");
-                        String regEnd = document.getString("Reg_End");
-                        String totalSeats = document.getString("Total_Seats");
-                        String availableSeats = document.getString("Available_Seats");
+                        eventName = document.getString("Event_Name");
+                        eventDescription = document.getString("Event_Des");
+                        eventDate = document.getString("Event_Date");
+                        regStart = document.getString("Reg_Start");
+                        regEnd = document.getString("Reg_End");
+                        totalSeats = document.getString("Total_Seats");
+                        availableSeats = document.getString("Available_Seats");
 
                         // Set values to TextViews
                         TextView eventNameTextView = findViewById(R.id.eventName);
